@@ -1,19 +1,5 @@
 <?php
-/**
- * GESTION CENTRALISÉE DES FAVORIS
- * Fichier: includes/favorites-handler.php
- * 
- * Fonctions pour gérer l'ajout/suppression des favoris
- * et vérifier si un article est en favori.
- */
 
-/**
- * Ajoute ou retire un article des favoris
- * @param PDO $pdo Connexion base de données
- * @param int $user_id ID de l'utilisateur
- * @param int $product_id ID de l'article
- * @return bool Succès de l'opération
- */
 function toggleFavorite($pdo, $user_id, $product_id) {
     try {
         $stmt = $pdo->prepare("
@@ -25,13 +11,13 @@ function toggleFavorite($pdo, $user_id, $product_id) {
         $exists = $stmt->fetch();
 
         if ($exists) {
-            // Retirer des favoris
+           
             $stmt = $pdo->prepare("
                 DELETE FROM favorites 
                 WHERE id_user = :id_user AND id_product = :id_product
             ");
         } else {
-            // Ajouter aux favoris
+           
             $stmt = $pdo->prepare("
                 INSERT INTO favorites (id_user, id_product, date_added) 
                 VALUES (:id_user, :id_product, UNIX_TIMESTAMP())
@@ -49,13 +35,6 @@ function toggleFavorite($pdo, $user_id, $product_id) {
     }
 }
 
-/**
- * Vérifie si un article est en favoris
- * @param PDO $pdo Connexion base de données
- * @param int $user_id ID de l'utilisateur
- * @param int $product_id ID de l'article
- * @return bool True si en favoris, false sinon
- */
 function isFavorite($pdo, $user_id, $product_id) {
     try {
         $stmt = $pdo->prepare("
@@ -74,12 +53,7 @@ function isFavorite($pdo, $user_id, $product_id) {
     }
 }
 
-/**
- * Récupère tous les favoris d'un utilisateur
- * @param PDO $pdo Connexion base de données
- * @param int $user_id ID de l'utilisateur
- * @return array Liste des articles favoris
- */
+
 function getUserFavorites($pdo, $user_id) {
     try {
         $stmt = $pdo->prepare("
@@ -98,4 +72,5 @@ function getUserFavorites($pdo, $user_id) {
         error_log("Erreur récupération favoris: " . $e->getMessage());
         return [];
     }
+
 }
