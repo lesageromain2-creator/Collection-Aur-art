@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4376C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3A2151;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fond rond -->
+  <circle cx="50" cy="50" r="48" fill="url(#gradient)"/>
+  
+  <!-- Lettre A stylisée -->
+  <path d="M 50 25 L 70 75 L 62 75 L 58 65 L 42 65 L 38 75 L 30 75 Z M 45 57 L 55 57 L 50 40 Z" 
+        fill="#FAF7F2" 
+        stroke="#FAF7F2" 
+        stroke-width="1"/>
+  
+  <!-- Accent artistique (trait décoratif) -->
+  <line x1="35" y1="80" x2="65" y2="80" 
+        stroke="#FAF7F2" 
+        stroke-width="2" 
+        stroke-linecap="round"/>
+</svg>
